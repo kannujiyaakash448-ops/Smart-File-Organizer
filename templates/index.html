@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Smart File Organizer</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>
+        Smart File Organizer
+    </h1>
+
+
+    <p class="description">
+
+        Select multiple files and organize
+        them automatically according to
+        their file type.
+
+    </p>
+
+
+    <div class="upload-box">
+
+        <form
+            method="POST"
+            action="/organize"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="file"
+                name="files"
+                multiple
+                required
+            >
+
+            <br>
+
+
+            <button type="submit">
+
+                Organize Files
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <div class="categories">
+
+        <h3>
+            Supported Categories
+        </h3>
+
+
+        <ul>
+
+            <li>Images</li>
+
+            <li>Documents</li>
+
+            <li>Videos</li>
+
+            <li>Audio</li>
+
+            <li>Archives</li>
+
+            <li>Programs</li>
+
+            <li>Others</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</body>
+
+  </html>
